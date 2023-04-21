@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.jetpack_tuto.databinding.FragmentABinding
@@ -16,7 +17,7 @@ import com.example.jetpack_tuto.databinding.FragmentABinding
 class FragmentA : Fragment() {
 
 
-   private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentABinding? = null
 
@@ -29,8 +30,8 @@ class FragmentA : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentABinding.inflate(inflater,container, false)
-        //binding.viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        _binding = FragmentABinding.inflate(inflater, container, false)
+         //binding.viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         //.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -45,9 +46,8 @@ class FragmentA : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         //le cycle de vie du fragment depends de l'activity
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        //mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
 
         binding.btnCounterFragmentA.setOnClickListener {
@@ -56,7 +56,7 @@ class FragmentA : Fragment() {
 
         }
 
-        mainViewModel.counterLiveData.observe(viewLifecycleOwner, Observer{ count ->
+        mainViewModel.counterLiveData.observe(viewLifecycleOwner, Observer { count ->
             binding.tvCounterFragmentA.text = count.toString()
 
         })

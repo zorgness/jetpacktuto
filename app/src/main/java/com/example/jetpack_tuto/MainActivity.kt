@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.jetpack_tuto.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var myViewModel: MainViewModel
-
+    //private lateinit var myViewModel: MainViewModel
+    private val myViewModel: MainViewModel by viewModels()
     //private lateinit var binding: ActivityMainBinding
 
 
@@ -25,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        myViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        //LE "by" est un delegate (on delegue au compilateur d'instancier à notre place)
+        //myViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         //le cycle de vie du viewmodel depends de l'activity ou du fragment
 
         //binding = ActivityMainBinding.inflate(layoutInflater)
@@ -54,7 +58,12 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnFragmentA.setOnClickListener {
-              supportFragmentManager.let {
+
+            supportFragmentManager.commit {
+                setTransition(TRANSIT_FRAGMENT_FADE)
+                replace(R.id.frame_layout, FragmentA())
+            }
+            /*  supportFragmentManager.let {
                    it.beginTransaction().apply {
                        replace(
                            R.id.frame_layout,
@@ -68,12 +77,16 @@ class MainActivity : AppCompatActivity() {
                            //
                        }
                    }
-               }
+               }*/
         }
 
         binding.btnFragmentB.setOnClickListener {
 
-            supportFragmentManager.let { fragment ->
+            supportFragmentManager.commit {
+                replace(binding.frameLayout.id, FragmentB())
+            }
+
+           /* supportFragmentManager.let { fragment ->
                 fragment.beginTransaction().apply {
                     replace(
                         R.id.frame_layout,
@@ -87,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                         //
                     }
                 }
-            }
+            }*/
         }
 
       /*  myViewModel.counterLiveData.observe(this, Observer { count ->
