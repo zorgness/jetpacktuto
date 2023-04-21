@@ -30,6 +30,8 @@ class FragmentA : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentABinding.inflate(inflater,container, false)
+        //binding.viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        //.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 

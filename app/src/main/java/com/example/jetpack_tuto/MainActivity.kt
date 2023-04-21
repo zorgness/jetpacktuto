@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,27 +16,40 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var myViewModel: MainViewModel
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         myViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         //le cycle de vie du viewmodel depends de l'activity ou du fragment
 
+        //binding = ActivityMainBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
+
+        //@ fait reférence a ce qu'il y a dans l'xml
+
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding.viewModel = myViewModel
+        binding.counterTest = 18
+
+        binding.lifecycleOwner = this
 
 
-        binding.btnCounter.setOnClickListener {
-            /*counter++
-            tvCounter.text = counter.toString()*/
+
+
+
+
+     /*   binding.btnCounter.setOnClickListener {
+            *//*counter++
+            tvCounter.text = counter.toString()*//*
             myViewModel.increment()
 
-        }
+        }*/
 
 
 
@@ -76,9 +90,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        myViewModel.counterLiveData.observe(this, Observer { count ->
+      /*  myViewModel.counterLiveData.observe(this, Observer { count ->
           binding.tvCounter.text = count.toString()
             Toast.makeText(this, count.toString(), Toast.LENGTH_SHORT).show()
-        })
+        })*/
     }
 }
