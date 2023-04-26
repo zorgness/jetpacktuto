@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.jetpack_tuto.new_navigation.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.jetpack_tuto.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_infosFragment"
+            app:destination="@id/infosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.jetpack_tuto.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infosFragment"
+        android:name="com.example.jetpack_tuto.new_navigation.InfosFragment"
+        android:label="fragment_infos"
+        tools:layout="@layout/fragment_infos" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.jetpack_tuto.new_navigation.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+
+
+
+     <!--   <argument
+            android:name="nom"
+            app:argType="string" />
+        <argument
+            android:name="prenom"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="integer" />-->
+        <argument
+            android:name="userParcelable"
+            app:argType="com.example.jetpack_tuto.new_navigation.UserParcelable" />
+    </fragment>
+</navigation>

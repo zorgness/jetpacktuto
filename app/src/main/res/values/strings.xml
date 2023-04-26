@@ -7,4 +7,23 @@
     <string name="fragment_a">fragment a</string>
     <string name="fragment_b">fragment b</string>
     <string name="trash">trash</string>
+    <string name="increment">increment</string>
+    <string name="change_color">change color</string>
+    <string name="envoyer">envoyer</string>
+    <string name="nom">Nom</string>
+    <string name="pr_nom">prénom</string>
+    <string name="new_joke">new joke</string>
+    <string name="fragment_1">Fragment 1</string>
+    <string name="fragment_2">fragment 2</string>
+    <string name="splash">Splash</string>
+    <string name="main">Main</string>
+    <string name="nouvel_utilisateur">Nouvel utilisateur</string>
+    <string name="nom_user">Nom</string>
+    <string name="prenom">prenom</string>
+    <string name="age">age</string>
+    <string name="nom_placeholder">nom</string>
+    <string name="envoyer_user">envoyer</string>
+    <string name="infos">Infos</string>
+    <string name="infos_label">infos</string>
+    <string name="new_user">new user</string>
 </resources>
